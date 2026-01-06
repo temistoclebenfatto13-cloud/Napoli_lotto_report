@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analisi NAPOLI - Coerenza + Golden Zone - 05/01/2026</title>
+    <style>
+        @media print {
+            .no-print { display: none; }
+            body { margin: 0; padding: 15px; }
+            .container { box-shadow: none; }
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .header .subtitle {
+            color: #666;
+            font-size: 1.2em;
+        }
+        
+        .badge-novita {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            display: inline-block;
+            margin: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .highlight-box h3 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+        }
+        
+        .highlight-numero {
+            font-size: 5em;
+            font-weight: bold;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            margin: 15px 0;
+        }
+        
+        .highlight-desc {
+            font-size: 1.3em;
+            margin-top: 15px;
+        }
+        
+        .section {
+            margin: 30px 0;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            page-break-inside: avoid;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .numero-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            margin: 18px 0;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        .numero-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+        
+        .numero-box .numero {
+            font-size: 3.5em;
+            font-weight: bold;
+            min-width: 100px;
+        }
+        
+        .numero-box .simbolo {
+            font-size: 1.5em;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            flex-grow: 1;
+            margin-left: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-label {
+            display: block;
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            display: block;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+        
+        .stat-value.positive {
+            color: #2ecc71;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        th {
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85em;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .stelle {
+            font-size: 1.2em;
+        }
+        
+        .ambi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .ambo-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .ambo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+        
+        .ambo-card.alta-coerenza {
+            border-left-color: #f093fb;
+            border-left-width: 6px;
+        }
+        
+        .ambo-numeri {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 12px;
+        }
+        
+        .ambo-score {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2ecc71;
+            margin-bottom: 8px;
+        }
+        
+        .ambo-coerenza {
+            display: inline-block;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+        
+        .ambo-coerenza.max {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6347 100%);
+        }
+        
+        .terno-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            margin: 18px 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+            position: relative;
+        }
+        
+        .terno-coerenza-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255,255,255,0.25);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .terno-box h4 {
+            font-size: 1.4em;
+            margin-bottom: 12px;
+        }
+        
+        .terno-numeri {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 15px 0;
+            letter-spacing: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .terno-desc {
+            font-size: 1.1em;
+            margin-top: 10px;
+        }
+        
+        .decina-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .decina-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 3px solid #667eea;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        
+        .decina-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .decina-card.gold {
+            border-color: #ffd700;
+            background: linear-gradient(to bottom, #fff9e6 0%, white 100%);
+        }
+        
+        .decina-card.silver {
+            border-color: #c0c0c0;
+            background: linear-gradient(to bottom, #f5f5f5 0%, white 100%);
+        }
+        
+        .decina-card.bronze {
+            border-color: #cd7f32;
+            background: linear-gradient(to bottom, #fff5e6 0%, white 100%);
+        }
+        
+        .decina-card h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .decina-card .media-trend {
+            text-align: center;
+            font-size: 2em;
+            font-weight: bold;
+            color: #2ecc71;
+            margin: 10px 0;
+        }
+        
+        .info-box {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-left: 5px solid #f093fb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .info-box h4 {
+            color: #764ba2;
+            font-size: 1.3em;
+            margin-bottom: 12px;
+        }
+        
+        .info-box ul {
+            margin-left: 20px;
+            color: #666;
+        }
+        
+        .gz-card {
+            background: linear-gradient(135deg, #fffbea 0%, #fff4cc 100%);
+            border: 3px solid #ffc107;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            box-shadow: 0 4px 15px rgba(255,193,7,0.3);
+        }
+        
+        .gz-numero {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff6f00;
+            margin-bottom: 10px;
+        }
+        
+        .gz-score {
+            display: inline-block;
+            background: #ff6f00;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .gz-stats {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 8px;
+        }
+        
+        .numeri-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .numero-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.3em;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.2s;
+        }
+        
+        .numero-badge:hover {
+            transform: scale(1.1);
+        }
+        
+        .footer {
+            margin-top: 50px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            text-align: center;
+            border-top: 3px solid #667eea;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-left: 4px solid #28a745;
+        }
+        
+        .alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .alert-danger {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-left: 4px solid #dc3545;
+        }
+        
+        @media (max-width: 768px) {
+            .container { padding: 20px; }
+            .header h1 { font-size: 1.8em; }
+            .highlight-numero { font-size: 3em; }
+            .stats { grid-template-columns: 1fr; }
+            .ambi-grid, .decina-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header">
+            <h1>🥇 NAPOLI</h1>
+            <div class="subtitle">La Ruota Più Costante del Lotto</div>
+            <div>
+                <span class="badge-novita">✨ INDICE DI COERENZA</span>
+                <span class="badge-novita">🟡 GOLDEN ZONE</span>
+            </div>
+            <p style="margin-top: 15px; color: #999;">
+                Analisi completa basata su 150 estrazioni<br>
+                <strong>Score Costanza: 1.40 (#1)</strong> | Data: 05 Gennaio 2026
+            </p>
+        </div>
+
+        <!-- HIGHLIGHT NUMERO 1 -->
+        <div class="highlight-box">
+            <h3>🏆 NUMERO VINCENTE ASSOLUTO</h3>
+            <div class="highlight-numero">27</div>
+            <div class="highlight-desc">
+                Trend: <strong>+4.22</strong> ⭐⭐⭐⭐⭐<br>
+                Frequenza: <strong>14</strong> | Ritardo: <strong>21</strong><br>
+                IL NUMERO PIÙ FORTE DI NAPOLI!
+            </div>
+        </div>
+
+        <!-- INFO BOX COERENZA + GOLDEN ZONE -->
+        <div class="info-box">
+            <h4>💎 Indice di Coerenza + 🟡 Golden Zone</h4>
+            <p style="margin-bottom: 12px;">
+                <strong>Indice di Coerenza:</strong> Misura l'allineamento statistico tra numeri (trend, ritardi, frequenze simili). Coerenza ≥0.80 = sincronizzazione perfetta!
+            </p>
+            <p>
+                <strong>Golden Zone:</strong> Numeri nella zona ottimale per l'uscita (ritardo 5-15, trend positivo, frequenza alta, categoria attiva).
+            </p>
+        </div>
+
+        <!-- SEZIONE 1: TOP 5 NUMERI -->
+        <div class="section">
+            <h2>🏆 1. TOP 5 NUMERI</h2>
+            
+            <div class="numero-box">
+                <span class="numero">27</span>
+                <span class="simbolo">⭐⭐⭐⭐⭐</span>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Trend</span>
+                        <span class="stat-value positive">+4.22</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Frequenza</span>
+                        <span class="stat-value">14</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Ritardo</span>
+                        <span class="stat-value">21</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="numero-box">
+                <span class="numero">11</span>
+                <span class="simbolo">⭐⭐⭐⭐⭐</span>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Trend</span>
+                        <span class="stat-value positive">+3.22</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Frequenza</span>
+                        <span class="stat-value">15</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Ritardo</span>
+                        <span class="stat-value">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="numero-box">
+                <span class="numero">67</span>
+                <span class="simbolo">⭐⭐⭐⭐⭐</span>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Trend</span>
+                        <span class="stat-value positive">+3.22</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Frequenza</span>
+                        <span class="stat-value">11</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Ritardo</span>
+                        <span class="stat-value">7</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="numero-box">
+                <span class="numero">12</span>
+                <span class="simbolo">⭐⭐⭐⭐</span>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Trend</span>
+                        <span class="stat-value positive">+2.22</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Frequenza</span>
+                        <span class="stat-value">15</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Ritardo</span>
+                        <span class="stat-value">5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="numero-box">
+                <span class="numero">18</span>
+                <span class="simbolo">⭐⭐⭐⭐</span>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Trend</span>
+                        <span class="stat-value positive">+2.22</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Frequenza</span>
+                        <span class="stat-value">11</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Ritardo</span>
+                        <span class="stat-value">13</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEZIONE 2: TOP 10 PER TREND -->
+        <div class="section">
+            <h2>💎 2. TOP 10 PER TREND</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Pos</th>
+                        <th>Numero</th>
+                        <th>Trend</th>
+                        <th>Stelle</th>
+                        <th>Freq</th>
+                        <th>Ritardo</th>
+                        <th>Valutazione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1°</strong></td>
+                        <td style="font-size: 1.5em; font-weight: bold; color: #667eea;">27</td>
+                        <td style="color: #2ecc71; font-weight: bold;">+4.22</td>
+                        <td class="stelle">⭐⭐⭐⭐⭐</td>
+                        <td>14</td>
+                        <td>21</td>
+                        <td>🔥 ECCELLENTE</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2°</strong></td>
+                        <td style="font-size: 1.5em; font-weight: bold; color: #667eea;">11</td>
+                        <td style="color: #2ecc71; font-weight: bold;">+3.22</td>
+                        <td class="stelle">⭐⭐⭐⭐⭐</td>
+                        <td>15</td>
+                        <td>1</td>
+                        <td>🔥 ECCELLENTE</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3°</strong></td>
+                        <td style="font-size: 1.5em; font-weight: bold; color: #667eea;">67</td>
+                        <td style="color: #2ecc71; font-weight: bold;">+3.22</td>
+                        <td class="stelle">⭐⭐⭐⭐⭐</td>
+                        <td>11</td>
+                        <td>7</td>
+                        <td>🔥 ECCELLENTE</td>
+                    </tr>
+                    <tr>
+                        <td>4°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">12</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>15</td>
+                        <td>5</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                    <tr>
+                        <td>5°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">15</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>9</td>
+                        <td>1</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                    <tr>
+                        <td>6°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">18</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>11</td>
+                        <td>13</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                    <tr>
+                        <td>7°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">68</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>8</td>
+                        <td>12</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                    <tr>
+                        <td>8°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">75</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>12</td>
+                        <td>10</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                    <tr>
+                        <td>9°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">76</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>10</td>
+                        <td>8</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                    <tr>
+                        <td>10°</td>
+                        <td style="font-size: 1.3em; font-weight: bold; color: #667eea;">79</td>
+                        <td style="color: #27ae60; font-weight: bold;">+2.22</td>
+                        <td class="stelle">⭐⭐⭐⭐</td>
+                        <td>9</td>
+                        <td>3</td>
+                        <td>💪 OTTIMO</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SEZIONE 2.5: GOLDEN ZONE -->
+        <div class="section">
+            <h2>🟡 2.5 GOLDEN ZONE (15 numeri)</h2>
+            <p style="color: #666; margin-bottom: 15px;">
+                Numeri nella <strong>zona ottimale</strong> per l'uscita: ritardo 5-15, trend ≥+1.0, frequenza ≥8, categoria attiva
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px;">
+                <div class="gz-card">
+                    <div class="gz-numero">🥇 75</div>
+                    <div class="gz-score">GZ: 0.77</div>
+                    <div class="gz-stats">Rit: 10 | Trend: +2.22 | Freq: 12</div>
+                </div>
+                
+                <div class="gz-card">
+                    <div class="gz-numero">🥈 67 🏆</div>
+                    <div class="gz-score">GZ: 0.73</div>
+                    <div class="gz-stats">Rit: 7 | Trend: +3.22 | Freq: 11</div>
+                </div>
+                
+                <div class="gz-card">
+                    <div class="gz-numero">🥉 16</div>
+                    <div class="gz-score">GZ: 0.72</div>
+                    <div class="gz-stats">Rit: 10 | Trend: +1.22 | Freq: 14</div>
+                </div>
+                
+                <div class="gz-card">
+                    <div class="gz-numero">12 🏆</div>
+                    <div class="gz-score">GZ: 0.66</div>
+                    <div class="gz-stats">Rit: 5 | Trend: +2.22 | Freq: 15</div>
+                </div>
+                
+                <div class="gz-card">
+                    <div class="gz-numero">18 🏆</div>
+                    <div class="gz-score">GZ: 0.66</div>
+                    <div class="gz-stats">Rit: 13 | Trend: +2.22 | Freq: 11</div>
+                </div>
+                
+                <div class="gz-card">
+                    <div class="gz-numero">76</div>
+                    <div class="gz-score">GZ: 0.63</div>
+                    <div class="gz-stats">Rit: 8 | Trend: +2.22 | Freq: 10</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 15px; color: #666; font-size: 0.95em;">
+                🏆 = Presente nel TOP 5 | Altri 9 numeri in Golden Zone: 68, 63, 38, 90, 1, 7, 34, 10, 47
+            </p>
+        </div>
+
+        <!-- SEZIONE 3: TOP 20 AMBI -->
+        <div class="section">
+            <h2>💑 3. TOP 20 AMBI (Coerenza + Golden Zone)</h2>
+            
+            <div class="ambi-grid">
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-11 👑</div>
+                    <div class="ambo-score">Score: 9.60</div>
+                    <div class="ambo-coerenza">Coer: 0.83 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">75-67 🟡</div>
+                    <div class="ambo-score">Score: 9.78</div>
+                    <div class="ambo-coerenza max">Coer: 0.92 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">67-18 🟡</div>
+                    <div class="ambo-score">Score: 9.67</div>
+                    <div class="ambo-coerenza max">Coer: 0.92 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">67-76 🟡</div>
+                    <div class="ambo-score">Score: 9.66</div>
+                    <div class="ambo-coerenza max">Coer: 0.93 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-67</div>
+                    <div class="ambo-score">Score: 9.08</div>
+                    <div class="ambo-coerenza">Coer: 0.82 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">11-67</div>
+                    <div class="ambo-score">Score: 8.72</div>
+                    <div class="ambo-coerenza max">Coer: 0.89 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">67-12 🟡</div>
+                    <div class="ambo-score">Score: 9.55</div>
+                    <div class="ambo-coerenza max">Coer: 0.86 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">67-68 🟡</div>
+                    <div class="ambo-score">Score: 9.51</div>
+                    <div class="ambo-coerenza max">Coer: 0.87 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">75-18 🟡</div>
+                    <div class="ambo-score">Score: 8.81</div>
+                    <div class="ambo-coerenza max">Coer: 0.97 🔥🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">75-76 🟡</div>
+                    <div class="ambo-score">Score: 8.74</div>
+                    <div class="ambo-coerenza max">Coer: 0.95 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">75-12 🟡</div>
+                    <div class="ambo-score">Score: 8.71</div>
+                    <div class="ambo-coerenza max">Coer: 0.92 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">18-76 🟡</div>
+                    <div class="ambo-score">Score: 8.65</div>
+                    <div class="ambo-coerenza max">Coer: 0.96 🔥🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-79</div>
+                    <div class="ambo-score">Score: 8.36</div>
+                    <div class="ambo-coerenza">Coer: 0.71 ⭐</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-15</div>
+                    <div class="ambo-score">Score: 8.34</div>
+                    <div class="ambo-coerenza">Coer: 0.70 ⭐</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">11-15</div>
+                    <div class="ambo-score">Score: 8.10</div>
+                    <div class="ambo-coerenza">Coer: 0.83 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">11-79</div>
+                    <div class="ambo-score">Score: 8.08</div>
+                    <div class="ambo-coerenza">Coer: 0.82 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-75</div>
+                    <div class="ambo-score">Score: 8.06</div>
+                    <div class="ambo-coerenza">Coer: 0.81 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-12</div>
+                    <div class="ambo-score">Score: 8.04</div>
+                    <div class="ambo-coerenza">Coer: 0.80 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">27-18</div>
+                    <div class="ambo-score">Score: 8.04</div>
+                    <div class="ambo-coerenza">Coer: 0.80 🔥</div>
+                </div>
+                
+                <div class="ambo-card alta-coerenza">
+                    <div class="ambo-numeri">11-12</div>
+                    <div class="ambo-score">Score: 7.80</div>
+                    <div class="ambo-coerenza max">Coer: 0.93 🔥🔥</div>
+                </div>
+            </div>
+            
+            <p style="margin-top: 15px; color: #666;">
+                🟡 = Ambo formato da numeri in Golden Zone | 🔥🔥🔥 = Coerenza ≥0.95 (quasi perfetta!)
+            </p>
+        </div>
+
+        <!-- SEZIONE 4: TOP 10 TERNI -->
+        <div class="section">
+            <h2>🎯 4. TOP 10 TERNI (con Coerenza)</h2>
+            
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.77 ⭐</div>
+                <h4>🥇 #1</h4>
+                <div class="terno-numeri">27 - 11 - 67</div>
+                <div class="terno-desc">Score: <strong>13.27</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.78 ⭐</div>
+                <h4>🥈 #2</h4>
+                <div class="terno-numeri">27 - 11 - 12</div>
+                <div class="terno-desc">Score: <strong>12.30</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.68 ⭐</div>
+                <h4>🥉 #3</h4>
+                <div class="terno-numeri">27 - 11 - 15</div>
+                <div class="terno-desc">Score: <strong>12.30</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.68 ⭐</div>
+                <h4>⭐ #4</h4>
+                <div class="terno-numeri">27 - 11 - 79</div>
+                <div class="terno-desc">Score: <strong>12.30</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.74 ⭐</div>
+                <h4>⭐ #5</h4>
+                <div class="terno-numeri">27 - 11 - 75</div>
+                <div class="terno-desc">Score: <strong>12.18</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.72 ⭐</div>
+                <h4>⭐ #6</h4>
+                <div class="terno-numeri">27 - 11 - 18</div>
+                <div class="terno-desc">Score: <strong>12.12</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.71 ⭐</div>
+                <h4>⭐ #7</h4>
+                <div class="terno-numeri">27 - 67 - 79</div>
+                <div class="terno-desc">Score: <strong>12.09</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.70 ⭐</div>
+                <h4>⭐ #8</h4>
+                <div class="terno-numeri">27 - 11 - 76</div>
+                <div class="terno-desc">Score: <strong>12.06</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.70 ⭐</div>
+                <h4>⭐ #9</h4>
+                <div class="terno-numeri">27 - 67 - 15</div>
+                <div class="terno-desc">Score: <strong>12.06</strong></div>
+            </div>
+
+            <div class="terno-box">
+                <div class="terno-coerenza-badge">Coer: 0.77 ⭐</div>
+                <h4>⭐ #10</h4>
+                <div class="terno-numeri">27 - 67 - 18</div>
+                <div class="terno-desc">Score: <strong>11.97</strong></div>
+            </div>
+
+            <div style="margin-top: 30px; padding: 20px; background: linear-gradient(135deg, #fffbea 0%, #fff4cc 100%); border-radius: 12px; border: 3px solid #ffc107;">
+                <h3 style="color: #ff6f00; margin-bottom: 10px;">🟡 BONUS: TOP 10 TERNI GOLDEN ZONE</h3>
+                <p style="color: #666; margin-bottom: 10px; font-size: 0.95em;">
+                    Terni formati SOLO da numeri in Golden Zone<br>
+                    <strong>💎 = TRIPLA CONFERMA</strong> (Golden Zone + Caldo + Recupero)
+                </p>
+                
+                <div style="background: rgba(255,255,255,0.5); padding: 12px; border-radius: 8px; margin-bottom: 15px;">
+                    <div style="font-size: 0.9em; color: #666;">
+                        <strong>7 numeri con TRIPLA CONFERMA:</strong> 
+                        <span style="font-weight: bold; color: #ff6f00;">12, 16, 18, 38, 63, 67, 75</span>
+                    </div>
+                </div>
+                
+                <div style="display: grid; gap: 10px;">
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #ffd700;">
+                        <div style="font-size: 1.3em; font-weight: bold; color: #ff6f00;">🥇 18 - 67 - 75 💎</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.36</strong> | Coer: <strong>0.90 🔥🔥</strong> | <span style="background: #ffd700; color: #333; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; font-weight: bold;">TRIPLA 3/3</span></div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.2em; font-weight: bold; color: #ff6f00;">🥈 18 - 67 - 76 ⚡</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.36</strong> | Coer: <strong>0.90 🔥🔥</strong> | Tripla 2/3</div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.2em; font-weight: bold; color: #ff6f00;">🥉 67 - 75 - 76 ⚡</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.36</strong> | Coer: <strong>0.90 🔥🔥</strong> | Tripla 2/3</div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">4. 67 - 68 - 76</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.27</strong> | Coer: <strong>0.87 🔥</strong> | Tripla 1/3</div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">5. 18 - 67 - 68 ⚡</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.24</strong> | Coer: <strong>0.86 🔥</strong> | Tripla 2/3</div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #ffd700;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">6. 12 - 67 - 75 💎</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.21</strong> | Coer: <strong>0.85 🔥</strong> | <span style="background: #ffd700; color: #333; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; font-weight: bold;">TRIPLA 3/3</span></div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">7. 67 - 68 - 75 ⚡</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.21</strong> | Coer: <strong>0.85 🔥</strong> | Tripla 2/3</div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 5px solid #ffd700;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">8. 12 - 18 - 67 💎</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.15</strong> | Coer: <strong>0.83 🔥</strong> | <span style="background: #ffd700; color: #333; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; font-weight: bold;">TRIPLA 3/3</span></div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">9. 12 - 67 - 76 ⚡</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.15</strong> | Coer: <strong>0.83 🔥</strong> | Tripla 2/3</div>
+                    </div>
+                    
+                    <div style="background: white; padding: 15px; border-radius: 8px; border-left: 4px solid #ff6f00;">
+                        <div style="font-size: 1.1em; font-weight: bold; color: #ff6f00;">10. 12 - 67 - 68 ⚡</div>
+                        <div style="margin-top: 5px;">Score: <strong>10.00</strong> | Coer: <strong>0.78 ⭐</strong> | Tripla 2/3</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 15px; padding: 12px; background: rgba(255,215,0,0.2); border-radius: 8px; border: 2px solid #ffd700;">
+                    <div style="font-size: 0.95em; color: #666;">
+                        <strong>💎 TRIPLA CONFERMA:</strong> 3 terni con tutti i numeri che soddisfano Golden Zone + Caldo + Recupero contemporaneamente!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEZIONE 5: PODIO DECINE -->
+        <div class="section">
+            <h2>📊 5. PODIO DECINE</h2>
+            
+            <div class="decina-grid">
+                <div class="decina-card gold">
+                    <div style="text-align: center; font-size: 3em;">🥇</div>
+                    <h3>11-20</h3>
+                    <div class="media-trend">+0.92</div>
+                    <p style="text-align: center; color: #666; margin-top: 10px;">
+                        Include: 11, 12, 15, 16, 18
+                    </p>
+                </div>
+
+                <div class="decina-card silver">
+                    <div style="text-align: center; font-size: 3em;">🥈</div>
+                    <h3>71-80</h3>
+                    <div class="media-trend">+0.62</div>
+                    <p style="text-align: center; color: #666; margin-top: 10px;">
+                        Include: 75, 76, 79
+                    </p>
+                </div>
+
+                <div class="decina-card bronze">
+                    <div style="text-align: center; font-size: 3em;">🥉</div>
+                    <h3>61-70</h3>
+                    <div class="media-trend">+0.52</div>
+                    <p style="text-align: center; color: #666; margin-top: 10px;">
+                        Include: 67, 68
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEZIONE 6: DOPPIO SEGNALE CORRETTO -->
+        <div class="section">
+            <h2>⚡ 6. DOPPIO SEGNALE (14 numeri)</h2>
+            <p style="color: #666; margin-bottom: 15px;">
+                Numeri con <strong>doppia conferma</strong>: sia CALDI (ritardo ≤10) che in RECUPERO (trend >0)
+            </p>
+            
+            <div class="numeri-grid">
+                <div class="numero-badge">9</div>
+                <div class="numero-badge">11</div>
+                <div class="numero-badge">12</div>
+                <div class="numero-badge">16</div>
+                <div class="numero-badge">18</div>
+                <div class="numero-badge">27</div>
+                <div class="numero-badge">29</div>
+                <div class="numero-badge">38</div>
+                <div class="numero-badge">60</div>
+                <div class="numero-badge">63</div>
+                <div class="numero-badge">64</div>
+                <div class="numero-badge">67</div>
+                <div class="numero-badge">75</div>
+                <div class="numero-badge">78</div>
+            </div>
+        </div>
+
+        <!-- SEZIONE 7: CONVERGENZA TOTALE -->
+        <div class="section">
+            <h2>💎 7. CONVERGENZA TOTALE</h2>
+            
+            <div class="alert-warning">
+                <strong>ℹ️ NESSUN NUMERO</strong><br>
+                Nessun numero soddisfa contemporaneamente tutti i criteri stringenti.<br>
+                <em>I TOP 5 e gli ambi Golden Zone + Alta Coerenza sono le migliori opportunità.</em>
+            </div>
+        </div>
+
+        <!-- SEZIONE 8: RITARDATARI CRITICI -->
+        <div class="section">
+            <h2>⏰ 8. RITARDATARI CRITICI</h2>
+            
+            <div class="alert-danger">
+                <strong>⚠️ ATTENZIONE - Numeri da evitare</strong>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Numero</th>
+                        <th>Ritardo</th>
+                        <th>Trend</th>
+                        <th>Frequenza</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #ffebee;">
+                        <td style="font-size: 1.5em; font-weight: bold; color: #c62828;">3</td>
+                        <td><strong style="color: #c62828;">63</strong></td>
+                        <td style="color: #c62828;">-2.78</td>
+                        <td>5</td>
+                        <td>🔺 CRITICO</td>
+                    </tr>
+                    <tr style="background: #ffebee;">
+                        <td style="font-size: 1.5em; font-weight: bold; color: #c62828;">41</td>
+                        <td><strong style="color: #c62828;">53</strong></td>
+                        <td style="color: #c62828;">-2.78</td>
+                        <td>8</td>
+                        <td>🔺 CRITICO</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <h3 style="color: #667eea; margin-bottom: 15px;">📊 Report Avanzato con Indice di Coerenza + Golden Zone</h3>
+            <p style="color: #666; font-size: 1.1em;">
+                <strong>Ruota:</strong> NAPOLI (Score Costanza: 1.40 - #1)<br>
+                <strong>Data Analisi:</strong> 05 Gennaio 2026<br>
+                <strong>Innovazioni:</strong> Indice di Coerenza + Golden Zone Analysis<br>
+                <strong>Statistiche:</strong> 15 numeri in Golden Zone | Coerenza media: 0.90
+            </p>
+        </div>
+    </div>
+</body>
+</html>
